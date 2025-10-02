@@ -12,6 +12,8 @@ import { useAppDispatch, useAppSelector } from "@store/index";
 
 // Import constants
 import routes from "@constants/route";
+
+// Import redux
 import { showDialog } from "@store/dialogSlice";
 
 const NoteCard = ({ excerpt, title }: { title: string; excerpt: string }) => {

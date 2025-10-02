@@ -41,11 +41,15 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Navbar onClickMenu={toggle} />
-        <NotesDrawer width={300} visible={val} onClose={toggle} />
-        <Routes>
-          <Route path={routes.HOME} element={<Home />} />
-          <Route path={routes.NOTE} element={<Note />} />
-        </Routes>
+        <div className="flex">
+          <NotesDrawer width={300} visible={val} onClose={toggle} />
+          <div className="flex-1">
+            <Routes>
+              <Route path={routes.HOME} element={<Home />} />
+              <Route path={routes.NOTE} element={<Note />} />
+            </Routes>
+          </div>
+        </div>
       </BrowserRouter>
       <ToastContainer />
       <DialogContainer />
