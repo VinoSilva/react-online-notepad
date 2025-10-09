@@ -1,5 +1,5 @@
 // Import libraries
-import { FaPlus, FaTrashCan } from "react-icons/fa6";
+import { FaPlus, FaTrashCan, FaDownload } from "react-icons/fa6";
 import { nanoid } from "@reduxjs/toolkit";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,8 @@ import routes from "@constants/route";
 
 // Import redux
 import { showDialog } from "@store/dialogSlice";
+import { downloadState } from "@store/localStorage";
+import { PERSIST_KEY } from "@store/pesistMiddleware";
 
 const NoteCard = ({ excerpt, title }: { title: string; excerpt: string }) => {
   return (
@@ -42,6 +44,10 @@ const NotesDrawer = ({ ...props }: DrawerProps) => {
     );
   };
 
+  const onClickDownload = () => {
+    downloadState(PERSIST_KEY);
+  };
+
   return (
     <Drawer {...props}>
       <div className="overflow-y-auto max-h-screen">
@@ -51,21 +57,26 @@ const NotesDrawer = ({ ...props }: DrawerProps) => {
               Create New
               <FaPlus />
             </Button>
-            <button
-              onClick={() => {
-                dispatch(
-                  showDialog({
-                    content: "Are you sure you want to clear all the notes?",
-                    onYes: () => {
-                      dispatch(clearAll());
-                    },
-                  })
-                );
-              }}
-              className="ml-auto cursor-pointer"
-            >
-              <FaTrashCan className="text-lg" />
-            </button>
+            <div className="flex gap-2 justify-end">
+              <button onClick={onClickDownload} className="cursor-pointer">
+                <FaDownload className="text-lg" />
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(
+                    showDialog({
+                      content: "Are you sure you want to clear all the notes?",
+                      onYes: () => {
+                        dispatch(clearAll());
+                      },
+                    })
+                  );
+                }}
+                className="cursor-pointer"
+              >
+                <FaTrashCan className="text-lg" />
+              </button>
+            </div>
           </div>
         </div>
         <div className="mt-5">

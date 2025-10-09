@@ -1,7 +1,7 @@
 import { type Middleware } from "@reduxjs/toolkit";
 import { saveState } from "./localStorage";
 
-const PERSIST_KEY = "notes-app";
+export const PERSIST_KEY = "notes-app";
 
 export const persistNotesMiddleware: Middleware =
   (storeAPI) => (next) => (action) => {
