@@ -1,7 +1,7 @@
 // Import libraries
 import { FaPlus, FaTrashCan, FaDownload } from "react-icons/fa6";
 import { nanoid } from "@reduxjs/toolkit";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Import components
 import Button from "@components/shared/Button";
@@ -34,14 +34,20 @@ const NotesDrawer = ({ ...props }: DrawerProps) => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const onCreate = () => {
+    const id = nanoid();
+
     dispatch(
       addNote({
-        excerpt: "Lorem Ipsum dorem. Lorem Ipsum dorem. Lorem Ipsum dorem.",
-        title: "Test",
-        id: nanoid(),
+        excerpt: "Content",
+        title: "New Note",
+        id,
       })
     );
+
+    navigate(routes.NOTE.replace(":id", id));
   };
 
   const onClickDownload = () => {
@@ -50,7 +56,7 @@ const NotesDrawer = ({ ...props }: DrawerProps) => {
 
   return (
     <Drawer {...props}>
-      <div className="overflow-y-auto max-h-screen">
+      <div className="overflow-y-auto max-h-full">
         <div className="flex justify-center mt-5">
           <div className="px-5 w-full flex flex-col gap-2">
             <Button onClick={onCreate} className="w-full">
