@@ -28,7 +28,7 @@ const Note = () => {
   }
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen h-full">
       <NoteForm
         key={params.id}
         onSubmit={(val) => {

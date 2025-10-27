@@ -16,7 +16,7 @@ import routes from "@constants/route";
 // Import redux
 import { showDialog } from "@store/dialogSlice";
 import { downloadState } from "@store/localStorage";
-import { PERSIST_KEY } from "@store/pesistMiddleware";
+import { PERSIST_KEY } from "@store/persistMiddleware";
 
 const NoteCard = ({ excerpt, title }: { title: string; excerpt: string }) => {
   return (

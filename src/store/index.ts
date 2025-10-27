@@ -4,7 +4,7 @@ import notesReducer, { type NotesState } from "./notesSlice";
 import toastsReducer from "./toastSlice";
 import dialogReducer from "./dialogSlice";
 import { loadState } from "./localStorage";
-import { persistNotesMiddleware } from "./pesistMiddleware";
+import { persistNotesMiddleware } from "./persistMiddleware";
 import { useDispatch, useSelector } from "react-redux";
 
 const PERSIST_KEY = "notes-app";
