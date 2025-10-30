@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa6";
 
+// Import components
+import AutoGrowTextarea from "@components/shared/AutoGrowTextArea";
+
 type NoteValues = {
   title: string;
   excerpt: string;
@@ -35,7 +38,12 @@ const NoteForm = ({
   };
 
   return (
-    <form className="flex flex-col h-full">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+      className="flex flex-col h-full"
+    >
       <div className="flex h-10 border-b-[0.5px] border-gray-400">
         <div className="w-full border-r-[0.5px] border-gray-400">
           <input
@@ -63,7 +71,7 @@ const NoteForm = ({
         </div>
       </div>
       <div className="flex-1 p-4">
-        <textarea
+        <AutoGrowTextarea
           value={val.excerpt}
           onChange={(e) => {
             setVal((prev) => ({
