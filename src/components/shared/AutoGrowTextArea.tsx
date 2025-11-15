@@ -8,12 +8,10 @@ const AutoGrowTextarea = ({
   const [ref, setRef] = useState<HTMLTextAreaElement>();
 
   useEffect(() => {
-    setTimeout(() => {
-      const el = ref;
-      if (!el) return;
-      el.style.height = "auto"; // reset to shrink if needed
-      el.style.height = `${el.scrollHeight}px`; // grow to fit content
-    }, 500);
+    const el = ref;
+    if (!el) return;
+    el.style.height = "auto"; // reset to shrink if needed
+    el.style.height = `${el.scrollHeight}px`; // grow to fit content
   }, [value, ref]); // runs whenever text changes
 
   return (
