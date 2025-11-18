@@ -36,6 +36,10 @@ const NotesDrawer = ({ ...props }: DrawerProps) => {
 
   const navigate = useNavigate();
 
+  const onClick = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   const onCreate = () => {
     const id = nanoid();
 
@@ -88,7 +92,7 @@ const NotesDrawer = ({ ...props }: DrawerProps) => {
         <div className="mt-5">
           {items.map(({ id, excerpt, title }) => {
             return (
-              <Link to={routes.NOTE.replace(":id", id)}>
+              <Link onClick={onClick} to={routes.NOTE.replace(":id", id)}>
                 <NoteCard excerpt={excerpt} title={title} key={id} />
               </Link>
             );
